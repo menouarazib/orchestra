@@ -1,0 +1,34 @@
+.Loading-builder {
+    height: 40vmin;
+    width: 53.33vmin;
+  }
+
+  .Loading-warning {
+    height: 20vmin;
+    width:20vmin;
+  }
+
+
+.Loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: 'center';
+}
+
+
+.Home {
+  text-align: center;
+}
+
+
+.Home-rocket {
+  height: 30vmin;
+  width:30vmin;
+}
+
+
+.Home-link {
+  color: #61dafb;
+}

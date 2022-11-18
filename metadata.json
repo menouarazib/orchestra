@@ -1,0 +1,31 @@
+{
+    "name": "",
+    "description": "relative path to description.md",
+    "version":"",
+    "args": [
+        "start",
+        "stop"
+    ],
+    "defaults": {
+        "start": "2008-07-03T00:00:00",
+        "stop": "2008-07-05T23:59:00"
+    },
+    "output": {
+        "type": "", /*TT, CAT, TS, IMAGE*/
+        "filename": ""
+    },
+    "annexes_outputs": [{
+        "type": "", /*TT, CAT, TS, IMAGE*/
+        "filename": ""
+    }, {}],
+    "install": {
+        "model_version":"",
+        "python_version": "",
+        "requirements": "requirements.txt",
+        "files": [
+        ],
+        "executable": "",
+        "pre_process": [],
+        "post_process": []
+    }
+}

@@ -1,0 +1,39 @@
+version: "1"
+services:
+  backend:
+    image: orchestra/backend
+    build:  
+      context: backend
+    volumes:
+      - ./backend:/orchestra/backend
+      - ./data:/orchestra/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/orchestra/tasksoutput/:/orchestra/tasksoutput
+    environment:
+      - FLASK_DEBUG=0
+      - FLASK_ENV=production
+      - FLASK_APP=server.py
+    ports:
+      - "5000:5000"
+    command:  ["flask", "run", "--host=0.0.0.0"]
+
+  frontend:
+    image: orchestra/frontend
+    build: 
+      context: frontend
+    volumes:
+      - ./frontend:/orchestra/frontend
+    environment:
+      - NODE_ENV=production
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+    command: ["npm", "start"]
+
+  
+  
+    
+
+
+    

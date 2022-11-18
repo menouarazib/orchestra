@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-rocket {
+  width: 200px;
+  height: 200px;
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
