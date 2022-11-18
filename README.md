@@ -38,7 +38,7 @@ List of endpoints exposed by the REST API :
 - `/tasks/<int:id>` : specific task metadata (status, errors, output, ...)
 - `/tasks/<int:id>/output` : download task output
 
-## Monitoring Orchestra
+## Monitoring Orchestra
 
 To monitor Orchestra you just need to open http://localhost:3000/ :
 
