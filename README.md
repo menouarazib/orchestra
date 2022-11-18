@@ -39,16 +39,9 @@ List of endpoints exposed by the REST API :
 - `/tasks/<int:id>/output` : download task output
 
 ## Monitoring Orchestra
+
 To monitor Orchestra you just need to open http://localhost:3000/ :
 
-<ul>
-<li>
-Installing a new module
-</li>
-<li>
-Rebuilding a module
-</li>
-<li>
-Trucking a running module for predictions
-</li>
-</ul>
+- Installing a new module
+- Rebuilding a module
+- Trucking a running module for predictions
