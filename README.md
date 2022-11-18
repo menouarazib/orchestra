@@ -16,14 +16,16 @@ Orchestra uses docker to run predictions of eahc module in an isolated container
 #### Dev Mode
 
 To Run Orchestra in dev mode you just need to run:
-run `docker-compose build`
-run `docker-compose up`
+
+- `docker-compose build`
+- `docker-compose up`
 
 #### Production Mode
 
 To Run Orchestra in prod mode you just need to run:
-`docker-compose -f docker-compose.prod.yml build`
-`docker-compose -f docker-compose.prod.yml up`
+
+- `docker-compose -f docker-compose.prod.yml build`
+- `docker-compose -f docker-compose.prod.yml up`
 
 ## REST API endpoints
 
