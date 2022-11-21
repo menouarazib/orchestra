@@ -1,4 +1,4 @@
-version: "1"
+version: "3.3"
 services:
   backend:
     image: orchestra/backend
@@ -19,17 +19,20 @@ services:
 
   frontend:
     image: orchestra/frontend
+    stdin_open: true
     build: 
       context: frontend
+      dockerfile: Dockerfile.prod
     volumes:
       - ./frontend:/orchestra/frontend
+      - /orchestra/frontend/node_modules
     environment:
       - NODE_ENV=production
     ports:
       - '3000:3000'
     depends_on:
       - backend
-    command: ["npm", "start"]
+    command: [ "serve", "-s", "build" ]
 
   
   

@@ -15,6 +15,12 @@ RUN npm install -g npm
 RUN npm install
 RUN npm install react-scripts@3.4.0 -g
 
+# Build the app
+RUN npm run build
+
+RUN npm install -g serve
+
+
 
 
 
