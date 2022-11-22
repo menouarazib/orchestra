@@ -20,7 +20,7 @@ COPY src/ src
 # Build
 RUN npm run build
 
-# Install aServer to serve static files
+# Install a Server in order to serve static files
 RUN npm install -g serve
 
 # Start the server

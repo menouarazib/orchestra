@@ -1,7 +1,7 @@
 # Use a Node 16 base image
 FROM node:16-alpine 
 
-#Set working directory
+# Set working directory
 WORKDIR /orchestra/frontend
 
 # Copy Package.json files
