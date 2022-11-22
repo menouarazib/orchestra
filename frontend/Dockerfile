@@ -4,18 +4,20 @@ FROM node:16-alpine
 #Set working directory
 WORKDIR /orchestra/frontend
 
-ENV PATH /orchestra/frontend/node_modules/.bin:$PATH
+# Copy Package.json files
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 
-# Copy app files
-COPY . .
-
-
-# ==== Install =====
+# Update NPM
 RUN npm install -g npm
+# Install node modules
 RUN npm install
-RUN npm install react-scripts@3.4.0 -g
 
+# Copy src and public folders
+COPY public/ public
+COPY src/ src
 
-
+# Start server
+CMD ["npm", "start"]
 
 

@@ -24,7 +24,6 @@ services:
       context: frontend
       dockerfile: Dockerfile.prod
     volumes:
-      - ./frontend:/orchestra/frontend
       - /orchestra/frontend/node_modules
     environment:
       - NODE_ENV=production
@@ -32,7 +31,7 @@ services:
       - '3000:3000'
     depends_on:
       - backend
-    command: [ "serve", "-s", "build" ]
+ 
 
   
   

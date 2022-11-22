@@ -4,10 +4,6 @@ import rocket from "../resources/rocket.gif";
 import Button from "@mui/material/Button";
 import "../resources/index.css";
 import { InputAdornment, Stack, TextField } from "@mui/material";
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import MonitorIcon from "@mui/icons-material/Monitor";
-import RunningWithErrorsIcon from "@mui/icons-material/RunningWithErrors";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { Container } from "@mui/system";
@@ -83,22 +79,6 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Box sx={{ "& > :not(style)": { m: 1 } }}>
-        <Fab
-          color="primary"
-          aria-label="Truck Module Running"
-          href="/module-running"
-        >
-          <RunningWithErrorsIcon />
-        </Fab>
-        <Fab
-          color="secondary"
-          aria-label="Monitoring Modules"
-          href="/monitoring-modules"
-        >
-          <MonitorIcon />
-        </Fab>
-      </Box>
       <img src={rocket} className="Home-rocket" alt="import your project" />
       <h1>Import your Project</h1>
       <Container>

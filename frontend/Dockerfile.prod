@@ -1,24 +1,30 @@
 # Use a Node 16 base image
 FROM node:16-alpine 
 
-#Set working directory
+# Set working directory
 WORKDIR /orchestra/frontend
 
-ENV PATH /orchestra/frontend/node_modules/.bin:$PATH
+# Copy Package.json files
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 
-# Copy app files
-COPY . .
-
-
-# ==== Install =====
+# Update NPM
 RUN npm install -g npm
-RUN npm install
-RUN npm install react-scripts@3.4.0 -g
+# Install node modules in production mode
+RUN npm install --production
 
-# Build the app
+# Copy src and public folders
+COPY public/ public
+COPY src/ src
+
+# Build
 RUN npm run build
 
+# Install aServer to serve static files
 RUN npm install -g serve
+
+# Start the server
+CMD ["serve" ,"-s", "build"]
 
 
 
