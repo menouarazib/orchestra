@@ -61,7 +61,10 @@ function Home(props) {
           "?" +
           __import_build_url__ +
           "=" +
-          url
+          url,
+        {
+          method: "GET",
+        }
       )
         .then((response) => response.json())
         .then((data) => {

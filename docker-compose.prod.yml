@@ -15,7 +15,7 @@ services:
       - FLASK_APP=server.py
     ports:
       - "5000:5000"
-    command:  ["flask", "run", "--host=0.0.0.0"]
+    command:  ["waitress-serve", "--host=0.0.0.0", "--port=5000", "server:app"]
 
   frontend:
     image: orchestra/frontend

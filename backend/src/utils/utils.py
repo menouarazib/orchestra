@@ -194,6 +194,11 @@ class DBManager:
             self.table_projcets, __DB_COLUMN_ID__, id)
         res = self.cur.execute(sql)
         res = res.fetchone()
+        if res is None:
+            msg = "The model with id {} does not exist in the database".format(
+                id)
+            raise Excep(msg)
+
         colnames = self.cur.description
         # add annexes_output
         annexes, annexes_colnames = self.get_annexes_output(id)
@@ -241,9 +246,12 @@ class DBManager:
         return 0
 
     def get_task(self, id):
+        logging.info("Get task with id = {}".format(id))
         sql = __select_var__ .format(
             self.table_tasks, __TASK_COLUMN_ID__, id)
         res = self.cur.execute(sql)
+        if res is None:
+            raise Excep("The requested id = {} of task does not exist")
         colnames = self.cur.description
         output = {}
         res = res.fetchone()
@@ -408,7 +416,7 @@ def verify_metadata_json(data):
     output = data
     missing = "is missing in {} ".format(METADATA_JSON_FILE_NAME)
     if __DB_COLUMN_NAME__ not in data:
-        msg = "{}  {}".format(__DB_COLUMN_NAME__, missing)
+        msg = "{} {}".format(__DB_COLUMN_NAME__, missing)
         logging.error(msg)
         raise Excep(msg)
     elif not data[__DB_COLUMN_NAME__].strip():
@@ -417,17 +425,17 @@ def verify_metadata_json(data):
         raise Excep(msg)
 
     if __DB_COLUMN_DESCRIPTION__ not in data:
-        msg = "{}  {}".format(__DB_COLUMN_DESCRIPTION__, missing)
+        msg = "{} {}".format(__DB_COLUMN_DESCRIPTION__, missing)
         logging.warn(msg)
         output[__DB_COLUMN_DESCRIPTION__] = ""
 
     if __DB_COLUMN_VERSION__ not in data:
-        msg = "{}  {}".format(__DB_COLUMN_NAME__, missing)
+        msg = "{} {}".format(__DB_COLUMN_VERSION__, missing)
         logging.warn(msg)
         output[__DB_COLUMN_VERSION__] = "1.0.0"
 
     if __DEFAULTS__ not in data:
-        msg = "{}  {}".format(__DEFAULTS__, missing)
+        msg = "{} {}".format(__DEFAULTS__, missing)
         logging.warn(msg)
         output[__DEFAULTS__] = {
             __ARG_START__: "2008-07-03T00:00:00",
@@ -435,59 +443,59 @@ def verify_metadata_json(data):
         }
 
     if __OUTPUT__ not in data:
-        msg = "{}  {}".format(__OUTPUT__, missing)
+        msg = "{} {}".format(__OUTPUT__, missing)
         logging.error(msg)
         raise Excep(msg)
 
     if __ANNEXES_OUTPUT__ not in data:
-        msg = "{}  {}".format(__ANNEXES_OUTPUT__, missing)
+        msg = "{} {}".format(__ANNEXES_OUTPUT__, missing)
         output[__ANNEXES_OUTPUT__] = []
         logging.warn(msg)
 
     if __INSTALL__ not in data:
-        msg = "{}  {}".format(__INSTALL__, missing)
+        msg = "{} {}".format(__INSTALL__, missing)
         logging.error(msg)
         raise Excep(msg)
     else:
         if __MODEL_VERSION__ not in data[__INSTALL__]:
             output[__INSTALL__][__MODEL_VERSION__] = "1.0.0"
-            msg = "{}  {}".format(__MODEL_VERSION__, missing)
+            msg = "{} {}".format(__MODEL_VERSION__, missing)
             logging.warn(msg)
 
         if __PYTHON_VERSION__ not in data[__INSTALL__]:
-            msg = "{}  {}".format(__PYTHON_VERSION__, missing)
+            msg = "{} {}".format(__PYTHON_VERSION__, missing)
             logging.error(msg)
             raise Excep(msg)
 
         if __REQUIREMENTS__ not in data[__INSTALL__]:
             output[__INSTALL__][__REQUIREMENTS__] = __REQUIREMENTS__+".txt"
-            msg = "{}  {}".format(__REQUIREMENTS__, missing)
+            msg = "{} {}".format(__REQUIREMENTS__, missing)
             logging.error(msg)
             raise Excep(msg)
         else:
             if not data[__INSTALL__][__REQUIREMENTS__]:
                 output[__INSTALL__][__REQUIREMENTS__] = __REQUIREMENTS__+".txt"
-                msg = "{}  {}".format(__REQUIREMENTS__, "Is empty")
+                msg = "{} {}".format(__REQUIREMENTS__, "Is empty")
                 logging.warn(msg)
 
         if __FILES__ not in data[__INSTALL__]:
             output[__INSTALL__][__FILES__] = []
-            msg = "{}  {}".format(__FILES__, missing)
+            msg = "{} {}".format(__FILES__, missing)
             logging.warn(msg)
 
         if __EXECUTABLE__ not in data[__INSTALL__]:
-            msg = "{}  {}".format(__EXECUTABLE__, missing)
+            msg = "{} {}".format(__EXECUTABLE__, missing)
             logging.error(msg)
             raise Excep(msg)
 
         if __PRE_PROCESS__ not in data[__INSTALL__]:
             output[__INSTALL__][__PRE_PROCESS__] = []
-            msg = "{}  {}".format(__PRE_PROCESS__, missing)
+            msg = "{} {}".format(__PRE_PROCESS__, missing)
             logging.warn(msg)
 
         if __POST_PROCESS__ not in data[__INSTALL__]:
             output[__INSTALL__][__POST_PROCESS__] = []
-            msg = "{}  {}".format(__POST_PROCESS__, missing)
+            msg = "{} {}".format(__POST_PROCESS__, missing)
             logging.warn(msg)
     return output
 

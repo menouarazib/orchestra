@@ -39,7 +39,9 @@ const ModuleView = ({ item, socket }) => {
     socket.emit(__docker_message__, "I'm Connected");
     setLoading(true);
     setShow(false);
-    fetch(url_fetch)
+    fetch(url_fetch, {
+      method: "GET",
+    })
       .then((response) => response.json())
       .then((data) => {
         setMessages([]);

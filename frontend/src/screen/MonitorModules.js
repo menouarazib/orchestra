@@ -20,8 +20,9 @@ const MonitorModules = (props) => {
   };
 
   useEffect(() => {
-    console.log("fetch");
-    fetch(url_fetch)
+    fetch(url_fetch, {
+      method: "GET",
+    })
       .then((response) => response.json())
       .then((data) => {
         handleResponse(data);
