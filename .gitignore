@@ -23,6 +23,7 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
 backend/__pycache__/
+__pycache__
 
 /data
 /repo_temp
