@@ -7,9 +7,10 @@ Each machine learning model is required to be implemented as a `python module` a
 All models installed within Orchestra are expected to adhere to these guidelines. This ensures a streamlined process and efficient management of resources within the system.
 
 # Installation of Orchestra
-To install Orchestra you should have installed `docker` in your machine and then just clone this repository. 
 
-# Run Orchestra
+To install Orchestra, ensure that `docker` is installed on your machine, then clone this repository.
+
+# Running Orchestra
 
 ## Dev Mode
 
