@@ -8,8 +8,9 @@ WORKDIR /orchestra/frontend
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-# Update NPM
-RUN npm install -g npm
+# Update NPM to a compatible version with Node 16
+RUN npm install -g npm@7
+
 # Install node modules
 RUN npm install
 
@@ -19,5 +20,3 @@ COPY src/ src
 
 # Start server
 CMD ["npm", "start"]
-
-
