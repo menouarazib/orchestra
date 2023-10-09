@@ -1,8 +1,8 @@
 # Orchestra
 
-Orchestra is an MLOps system designed for the French National Data Center for Natural Plasmas of the Solar System (CDPP). It facilitates the installation, management, prediction, and monitoring of machine learning models. 
+Orchestra is an MLOps system designed for the French National Data Center for Natural Plasmas of the Solar System [CDPP](https://cdpp.cnes.fr/). It facilitates the installation, management, prediction, and monitoring of machine learning models. 
 
-Each machine learning model is required to be implemented as a `python module` and should include a (metadata.json)[(https://github.com/menouarazib/orchestra/blob/master/metadata.json)] file with necessary information. Orchestra manages the installation of these models along with their requirements in a dedicated Docker container. 
+Each machine learning model is required to be implemented as a `python module` and should include a [metadata.json][(https://github.com/menouarazib/orchestra/blob/master/metadata.json)] file with necessary information. Orchestra manages the installation of these models along with their requirements in a dedicated Docker container. 
 
 All models installed within Orchestra are expected to adhere to these guidelines. This ensures a streamlined process and efficient management of resources within the system.
 
