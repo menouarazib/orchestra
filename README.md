@@ -1,15 +1,17 @@
-# AMDA-Orchestra
+# Orchestra
 
-Orchestra is a collection of tools for managing the backend part of AMDA's machine learning pipeline. Orchestra uses Flask to expose a REST API used by AMDA's internal components to retrieve
-information about the modules that are installed, create new prediction and more.
+Orchestra is an MLOps system designed for the French National Data Center for Natural Plasmas of the Solar System (CDPP). It facilitates the installation, management, prediction, and monitoring of machine learning models. 
 
-Each machine learning model is implemented as a `python module` that is installed with all its requirements in a dedictated docker container.
+Each machine learning model is required to be implemented as a `python module` and should include a (metadata.json)[(https://github.com/menouarazib/orchestra/blob/master/metadata.json)] file with necessary information. Orchestra manages the installation of these models along with their requirements in a dedicated Docker container. 
+
+All models installed within Orchestra are expected to adhere to these guidelines. This ensures a streamlined process and efficient management of resources within the system.
+
 
 ## Installation
 
 ### Docker
 
-Orchestra uses docker to run predictions of eahc module in an isolated container, so in order to use it you should have installed docker in your machine.
+Orchestra uses docker to run predictions of each module in an isolated container, so in order to use it you should have installed docker in your machine.
 
 ### Run Orchestra
 
@@ -31,7 +33,7 @@ To Run Orchestra in prod mode you just need to run:
 
 List of endpoints exposed by the REST API :
 
-- `/modules` : retrieve a list of modules and assiciated metadata
+- `/modules` : retrieve a list of modules and associated metadata
 - `/modules/<int:id>` : specific module metadata
 - `/modules/<int:id>/run [args]` : request executing specified model with arguments supplied by user
 - `/tasks` : retrieve list of tasks and associated metadata
