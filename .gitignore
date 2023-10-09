@@ -27,4 +27,6 @@ __pycache__
 
 /data
 /repo_temp
-*.pyc 
+*.pyc
+
+.vscode/
